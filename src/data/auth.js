@@ -1,7 +1,10 @@
-const BASE_URL = "http://localhost:3001/api/auth";
-
+const BASE_URL = "http://localhost:3001/api";
 const signIn = async (formData) => {
-    const res = await fetch(`${BASE_URL}/login`, {
+    if(!formData)
+    {
+        return;
+    }
+    const res = await fetch(`${BASE_URL}/auth/login`, {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -18,7 +21,8 @@ const signIn = async (formData) => {
 
 const me = async () => {
     const token = localStorage.getItem("token");
-    const res = await fetch(`${BASE_URL}/profile`, {
+    if(!token) throw new Error ("Token is not found!");
+    const res = await fetch(`${BASE_URL}/auth/profile`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -30,5 +34,21 @@ const me = async () => {
 
     return data;
 };
+const signUp = async (formData) => {
+    if (!formData) {
+        return;
+    }
+    const res = await fetch(`${BASE_URL}/users`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+    });
 
-export { signIn, me };
+    if (!res.ok) throw new Error(`${res.status}. Something went wrong!`);
+
+
+    return res;
+};
+export { signIn, me, signUp };

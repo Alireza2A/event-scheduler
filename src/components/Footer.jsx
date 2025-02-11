@@ -1,11 +1,6 @@
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router";
 
 const Footer = () => {
-  const location = useLocation();
-
-  if (location.pathname === '/') {
-    return null;
-  }
 
   return (
     <footer className="footer bg-[#27450D] bg-opacity-20 p-10 text-[#48371E] flex justify-between items-start w-full">

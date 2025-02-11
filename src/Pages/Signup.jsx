@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import MainLayout from "../layouts/MainLayout";
+import { signUp } from "../data/auth";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -23,20 +23,8 @@ const SignUp = () => {
       return;
     }
 
-    const url = "http://localhost:5173/api/users";
-    const requestBody = {
-      email: email,
-      password: password,
-    };
-
     try {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      });
+      const res = await signUp({email, password});
 
       if (res.ok) {
         navigate("/signin");
@@ -49,7 +37,6 @@ const SignUp = () => {
   };
 
   return (
-    <MainLayout>
       <div className="hero bg-transparent">
         <div className="hero-content text-center">
           <div className="max-w-md">
@@ -78,7 +65,7 @@ const SignUp = () => {
                 <input
                   id="email"
                   type="email"
-                  className="grow"
+                  className="grow  text-yellow-50"
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -100,7 +87,7 @@ const SignUp = () => {
                 <input
                   id="password"
                   type="password"
-                  className="grow"
+                  className="grow text-yellow-50"
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -117,7 +104,6 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
   );
 };
 
