@@ -17,9 +17,14 @@ const Footer = () => {
       </nav>
       <nav className="flex flex-col gap-2">
         <h6 className="footer-title">Company</h6>
-        <a className="link link-hover">About us</a>
+        <a className="link link-hover">About Us</a>
         <a className="link link-hover">Contact</a>
         <a className="link link-hover">Impressum</a>
+        </nav>
+      <nav className="flex flex-col gap-2">
+        <h6 className="footer-title">Attributions</h6>
+        <p>Icons by FontAwesome</p> 
+        <p>Sloths by freepik.com/author/catalyststuff</p>
       </nav>
       <nav className="flex flex-col gap-2">
         <h6 className="footer-title">Social</h6>

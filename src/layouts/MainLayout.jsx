@@ -6,13 +6,12 @@ import bgImage from '../assets/bgfull.jpg';
 const MainLayout = ({ children }) => {
   const location = useLocation(); 
 
-  // Optional: Prevent rendering anything on the homepage
   if (location.pathname === '/') {
     return null;
   }
 
   return (
-    <div className="relative h-screen flex flex-col">
+    <div className="relative min-h-screen flex flex-col">
       
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#DBF0BE] to-[#78AC4B] z-10">
