@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
+import MainLayout from "../layouts/MainLayout";
 
 const SignIn = ({ setAuthenticated, setToken }) => {
   const [email, setEmail] = useState("");
@@ -46,12 +47,12 @@ const SignIn = ({ setAuthenticated, setToken }) => {
   };
 
   return (
-    <>
-      <div className="hero">
+    <MainLayout>
+      <div className="hero bg-transparent">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-5xl font-bold">Sign In</h1>
-            <p className="py-6">
+            <h1 className="text-5xl font-bold text-green-900">Sign In</h1>
+            <p className="py-6 text-[#48371E]">
               Access your account to continue to your events.
               <br />
               Don’t have an account?{" "}
@@ -65,7 +66,7 @@ const SignIn = ({ setAuthenticated, setToken }) => {
               method="post"
               onSubmit={handleSignIn}
             >
-              <label className="input input-bordered flex items-center gap-2">
+              <label className="input input-bordered flex items-center gap-2 bg-green-950">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 16 16"
@@ -84,7 +85,7 @@ const SignIn = ({ setAuthenticated, setToken }) => {
                 />
               </label>
 
-              <label className="input input-bordered flex items-center gap-2">
+              <label className="input input-bordered flex items-center gap-2 bg-green-950">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 16 16"
@@ -108,12 +109,16 @@ const SignIn = ({ setAuthenticated, setToken }) => {
               {errorMessage && (
                 <p className="text-red-500 text-sm">{errorMessage}</p>
               )}
-              <input type="submit" value="Submit" className="btn btn-neutral" />
+              <input
+                type="submit"
+                value="Submit"
+                className="btn bg-[#27450D] bg-opacity-70 text-white"
+              />
             </form>
           </div>
         </div>
       </div>
-    </>
+    </MainLayout>
   );
 };
 

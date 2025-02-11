@@ -5,7 +5,7 @@ import {
   Route,
   Routes,
   Navigate,
-} from "react-router-dom";
+} from "react-router";
 
 // Pages
 import SignIn from "./Pages/SignIn";
