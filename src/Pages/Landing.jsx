@@ -45,7 +45,7 @@ const LandingPage = () => {
           backgroundPosition: 'right',
         }}
       >
-        <h1 className="absolute bottom-4 left-16 text-2xl font-galada z-10">ChillPlanner</h1>
+        <h1 className="absolute bottom-4 left-60 text-2xl font-galada z-10">ChillPlanner</h1>
         <div className="absolute inset-0 bg-linear-to-b from-[#DBF0BE] to-[#72AF1D] bg-opacity-50 z-0"></div>
       </div>
     </div>
