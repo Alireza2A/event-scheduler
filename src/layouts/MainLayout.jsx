@@ -6,7 +6,6 @@ import bgImage from '../assets/bgfull.jpg';
 const MainLayout = ({ children }) => {
   const location = useLocation(); 
 
-  // Optional: Prevent rendering anything on the homepage
   if (location.pathname === '/') {
     return null;
   }
