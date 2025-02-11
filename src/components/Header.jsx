@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-[#27450D] bg-opacity-20">
       <div className="navbar-start">
-        <a className="text-xl text-[#745133]">ChillPlanner</a>
+        <a className="text-xl text-[#745133] font-galada mt-2">ChillPlanner</a>
       </div>
       <div className="navbar-end gap-8 mr-2">
         {/* Events Icon */}

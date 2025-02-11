@@ -11,7 +11,7 @@ const Footer = () => {
     <footer className="footer bg-[#27450D] bg-opacity-20 p-10 text-[#48371E] flex justify-between items-start w-full">
       <nav className="flex flex-col gap-2">
         <h6 className="footer-title">ChillPlanner</h6>
-        <Link to="/events" className="link link-hover">Events</Link>
+        <Link to="/home" className="link link-hover">Events</Link>
         <Link to="/calendar" className="link link-hover">Calendar</Link>
         <Link to="/signin" className="link link-hover">Sign in</Link>
       </nav>

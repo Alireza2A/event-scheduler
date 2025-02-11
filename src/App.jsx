@@ -14,6 +14,12 @@ import SignUp from './Pages/SignUp';
 import Home from './Pages/Home';
 import MyCalendar from './Pages/Calendar';
 
+//Fonts
+
+import '@fontsource/galada';
+import '@fontsource/cabin';
+import '@fontsource/cabin-condensed';
+
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [token, setToken] = useState(

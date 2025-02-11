@@ -112,7 +112,7 @@ const SignIn = ({ setAuthenticated, setToken }) => {
               <input
                 type="submit"
                 value="Submit"
-                className="btn bg-[#27450D] bg-opacity-70 text-white"
+                className="btn bg-green-900 hover:bg-green-700 text-white"
               />
             </form>
           </div>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import Lottie from 'lottie-react';
 import slothAnimation from '../assets/sloth.json';
-import bgImage from '../assets/bg-l.jpg'; // Import the background image
+import bgImage from '../assets/bg-l.jpg'; 
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -22,21 +22,21 @@ const LandingPage = () => {
           background: 'linear-gradient(to bottom, #EBD9A6, #DBF0BE, #72AF1D)',
         }}
       >
-        <h2 className="text-2xl md:text-4xl font-bold mb-4 animate-fade-in">
+        <h2 className="text-2xl md:text-4xl font-cabincon mb-2 animate-fade-in">
           Take it slowly...
         </h2>
         <Lottie
           animationData={slothAnimation}
           className="w-3/4 max-w-md"
-          loop={false} // Ensure it plays only once
-          onComplete={handleAnimationComplete} // Trigger redirection when animation ends
+          loop={true}
         />
-        <h2 className="text-2xl md:text-4xl font-bold mt-4 animate-fade-in animation-delay-1000">
+        <h2 className="text-2xl md:text-4xl font-cabincon mt-2 animate-fade-in animation-delay-1000">
           ...day by day!
         </h2>
+        <Link to="/SignIn" className="link link-hover"><button className="btn mt-8 bg-green-900 hover:bg-green-700 font-cabin text-white">Start now</button></Link>
       </div>
 
-      {/* Right Side with Background */}
+      {/* Right Side */}
       <div
         className="w-2/3 h-full relative"
         style={{
@@ -45,7 +45,8 @@ const LandingPage = () => {
           backgroundPosition: 'right',
         }}
       >
-        <div className="absolute inset-0 bg-linear-to-b from-[#DBF0BE] to-[#72AF1D] bg-opacity-50 z-0"></div> {/* Overlay for 50% opacity */}
+        <h1 className="absolute bottom-4 left-16 text-2xl font-galada z-10">ChillPlanner</h1>
+        <div className="absolute inset-0 bg-linear-to-b from-[#DBF0BE] to-[#72AF1D] bg-opacity-50 z-0"></div>
       </div>
     </div>
   );

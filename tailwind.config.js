@@ -14,6 +14,11 @@ export default {
           '100%': { opacity: 1 },
         },
       },
+      fontFamily: {
+        galada: ['"Galada"', 'sans-serif'],
+        cabin: ['"Cabin"', 'sans-serif'],
+        cabincon: ['"Cabin Condensed"', 'sans-serif'],
+      },
     },
   },
   plugins: [daisyui],

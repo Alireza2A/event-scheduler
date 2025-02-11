@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/cabin": "^5.1.1",
+    "@fontsource/cabin-condensed": "^5.1.1",
+    "@fontsource/galada": "^5.1.1",
     "lottie-react": "^2.4.1",
     "react": "^19.0.0",
     "react-calendar": "^5.1.0",
