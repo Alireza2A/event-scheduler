@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { useLocation } from "react-router-dom";
+import MainLayout from "../layouts/MainLayout";
 
 function Home({ id, token }) {
   const [events, setEvents] = useState([]);
@@ -33,6 +34,7 @@ function Home({ id, token }) {
   }, [token, location.key]);
 
   return (
+    <MainLayout>
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">My Events</h1>
       {loading ? (
@@ -49,6 +51,7 @@ function Home({ id, token }) {
         </div>
       )}
     </div>
+    </MainLayout>
   );
 }
 export default Home;

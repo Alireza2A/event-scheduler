@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import MainLayout from "../layouts/MainLayout";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -9,9 +10,7 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedAuthenticated = JSON.parse(
-      localStorage.getItem("authenticated")
-    );
+    const storedAuthenticated = JSON.parse(localStorage.getItem("authenticated"));
     if (storedAuthenticated) {
       navigate("/");
     }
@@ -38,10 +37,11 @@ const SignUp = () => {
         },
         body: JSON.stringify(requestBody),
       });
+
       if (res.ok) {
         navigate("/signin");
       } else {
-        setErrorMessage("Error during POST request");
+        setErrorMessage("Sign up failed, please try again.");
       }
     } catch (error) {
       console.error("Error during POST request:", error);
@@ -49,20 +49,23 @@ const SignUp = () => {
   };
 
   return (
-    <>
-      <div className="hero">
+    <MainLayout>
+      <div className="hero bg-transparent">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-5xl font-bold">Sign Up</h1>
-            <p className="py-6">
-              Create a new account and make an event today! <br />
+            <h1 className="text-5xl font-bold text-green-900">Sign Up</h1>
+            <p className="py-6 text-[#48371E]">
+              Create a new account and schedule an event today! <br />
               Already have an account?{" "}
               <a className="text-blue-500 hover:underline" href="/signin">
                 Sign In
               </a>
             </p>
-            <form className="flex flex-col gap-2 p-8" onSubmit={handleSubmit}>
-              <label className="input input-bordered flex items-center gap-2">
+            <form
+              className="flex flex-col gap-2 p-8"
+              onSubmit={handleSubmit}
+            >
+              <label className="input input-bordered flex items-center gap-2 bg-green-950">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 16 16"
@@ -81,7 +84,7 @@ const SignUp = () => {
                 />
               </label>
 
-              <label className="input input-bordered flex items-center gap-2">
+              <label className="input input-bordered flex items-center gap-2 bg-green-950">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 16 16"
@@ -105,12 +108,16 @@ const SignUp = () => {
               {errorMessage && (
                 <p className="text-red-500 text-sm">{errorMessage}</p>
               )}
-              <input type="submit" value="Submit" className="btn btn-neutral" />
+              <input
+                type="submit"
+                value="Submit"
+                className="btn bg-[#27450D] bg-opacity-70 text-white"
+              />
             </form>
           </div>
         </div>
       </div>
-    </>
+    </MainLayout>
   );
 };
 
