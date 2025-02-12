@@ -13,7 +13,7 @@ const fetchUserEvents = async () => {
 
     try {
       
-      const res = await fetch("http://localhost:5173/api/events", {
+      const res = await fetch("http://localhost:3001/api/events", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

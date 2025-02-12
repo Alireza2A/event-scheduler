@@ -1,7 +1,7 @@
-const BASE_URL = "http://localhost:3001/api";
+import { BASE_URL } from "./EventsApiURL";
+
 const signIn = async (formData) => {
-    if(!formData)
-    {
+    if (!formData) {
         return;
     }
     const res = await fetch(`${BASE_URL}/auth/login`, {
@@ -21,7 +21,7 @@ const signIn = async (formData) => {
 
 const me = async () => {
     const token = localStorage.getItem("token");
-    if(!token) throw new Error ("Token is not found!");
+    if (!token) throw new Error("Token is not found!");
     const res = await fetch(`${BASE_URL}/auth/profile`, {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -47,7 +47,6 @@ const signUp = async (formData) => {
     });
 
     if (!res.ok) throw new Error(`${res.status}. Something went wrong!`);
-
 
     return res;
 };
