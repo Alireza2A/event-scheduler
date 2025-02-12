@@ -1,35 +1,58 @@
 import Navbar from "../components/Header";
 import Footer from "../components/Footer";
-import { useLocation } from "react-router";
 import bgImage from '../assets/bgfull.jpg';
+import { me } from "../data/auth";
+import { Outlet } from "react-router";
+import {useState, useEffect} from "react";
 
-const MainLayout = ({ children }) => {
-  const location = useLocation(); 
+const MainLayout = () => {
+  const [signedIn, setSignedIn] = useState(false);
+  const [user, setUser] = useState();
+  const [checkSession, setCheckSession] = useState(true);
+  useEffect(() => {
+        const getUser = async () => {
+            try {
+                const data = await me();
 
-  if (location.pathname === '/') {
-    return null;
-  }
+                setUser(data);
+                setSignedIn(true);
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setCheckSession(false);
+            }
+        };
+
+        if (checkSession) getUser();
+    }, [checkSession]);
 
   return (
-    <div className="relative min-h-screen flex flex-col">
-      
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#DBF0BE] to-[#78AC4B] z-10">
-           {/* Background Image */}
-      <div className="absolute inset-0 bg-cover bg-bottom bg-no-repeat opacity-50" style={{ backgroundImage: `url(${bgImage})` }}></div>
-      </div>
-      <div className="relative z-20">
-        <Navbar />
-      </div>
+      <div className="relative min-h-screen flex flex-col">
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#DBF0BE] to-[#78AC4B] z-10">
+              {/* Background Image */}
+              <div className="absolute inset-0 bg-cover bg-bottom bg-no-repeat opacity-50" style={{ backgroundImage: `url(${bgImage})` }}></div>
+          </div>
+          <div className="relative z-20">
+              <Navbar />
+          </div>
 
-      {/* Main Content */}
-      <div className="relative z-10">
-        {children}
-      </div><div className="z-20 mt-auto">
-        <Footer />
+          {/* Main Content */}
+          <main className="relative z-10">
+              <Outlet
+                  context={{
+                      signedIn,
+                      setSignedIn,
+                      user,
+                      setUser,
+                      setCheckSession,
+                  }}
+              />
+          </main>
+          <div className="z-20 mt-auto">
+              <Footer />
+          </div>
       </div>
-
-    </div>
   );
 };
 

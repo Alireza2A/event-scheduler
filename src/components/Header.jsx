@@ -1,12 +1,6 @@
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router";
 
 const Navbar = () => {
-  const location = useLocation(); 
-
-  if (location.pathname === '/') {
-    return null;
-  }
-
   return (
     <div className="navbar bg-[#27450D] bg-opacity-20">
       <div className="navbar-start">

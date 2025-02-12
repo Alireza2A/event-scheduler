@@ -6,7 +6,7 @@ import {
   Routes,
   Navigate,
 } from 'react-router-dom';
-
+import MainLayout from "./layouts/MainLayout";
 // Pages
 import LandingPage from './Pages/Landing';
 import SignIn from './Pages/SignIn';
@@ -15,50 +15,26 @@ import Home from './Pages/Home';
 import MyCalendar from './Pages/Calendar';
 
 function App() {
-  const [authenticated, setAuthenticated] = useState(false);
-  const [token, setToken] = useState(
-    JSON.parse(localStorage.getItem('token')) || ''
-  );
-
-  // Check if user is authenticated on mount
-  useEffect(() => {
-    const storedToken = JSON.parse(localStorage.getItem('token'));
-    if (storedToken) {
-      setAuthenticated(true);
-    } else {
-      setAuthenticated(false);
-    }
-  }, [token]);
 
   return (
-    <Router>
-      <Routes>
-        {/* Landing Page */}
-        <Route path="/" element={<LandingPage />} />
+      <Router>
+          <Routes>
+              {/* Landing Page */}
+              <Route path="/" element={<LandingPage />} />
 
-        {/* Sign In Route */}
-        <Route
-          path="/signin"
-          element={
-            authenticated ? (
-              <Navigate to="/home" />
-            ) : (
-              <SignIn setAuthenticated={setAuthenticated} setToken={setToken} />
-            )
-          }
-        />
+              <Route path="/" element={<MainLayout />}>
+                  {/* Sign In Route */}
+                  <Route path="/signin" element={<SignIn />} />
 
-        {/* Sign Up Route */}
-        <Route path="/signup" element={<SignUp />} />
+                  {/* Sign Up Route */}
+                  <Route path="/signup" element={<SignUp />} />
 
-        {/* Home Route, only accessible if authenticated */}
-        <Route
-          path="/home"
-          element={authenticated ? <Home /> : <Navigate to="/signin" />}
-        />
-        <Route path="/calendar" element={<MyCalendar />} />
-      </Routes>
-    </Router>
+                  {/* Home Route, only accessible if authenticated */}
+                  <Route path="/home" element={ <Home /> }/>
+                  <Route path="/calendar" element={<MyCalendar />} />
+              </Route>
+          </Routes>
+      </Router>
   );
 }
 

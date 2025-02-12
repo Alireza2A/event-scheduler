@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
+import { useOutletContext, Navigate } from "react-router";
 
-import { useLocation } from "react-router-dom";
-import MainLayout from "../layouts/MainLayout";
-
-function Home({ id, token }) {
+function Home({ id }) {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const fetchUserEvents = async () => {
+  const { signedIn } = useOutletContext();
+
+
+const token = localStorage.getItem("token");
+
+const fetchUserEvents = async () => {
+
     try {
+      
       const res = await fetch("http://localhost:5173/api/events", {
         method: "GET",
         headers: {
@@ -31,10 +36,9 @@ function Home({ id, token }) {
 
   useEffect(() => {
     fetchUserEvents();
-  }, [token, location.key]);
-
+  }, []);
+if (!signedIn) return <Navigate to="/signin" />;
   return (
-    <MainLayout>
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">My Events</h1>
       {loading ? (
@@ -51,7 +55,6 @@ function Home({ id, token }) {
         </div>
       )}
     </div>
-    </MainLayout>
   );
 }
 export default Home;
