@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useOutletContext, Navigate } from "react-router";
 import CreateEventForm from "./CreateEventForm";
-import EventCard from "../components/EventCard"; 
-
+import EventCard from "../components/EventCard";
 
 function Home({ id }) {
   const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Kein API-Call, daher direkt false setzen
   const { signedIn } = useOutletContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -19,6 +18,7 @@ function Home({ id }) {
   return (
     <div className="container mx-auto p-4 text-center">
       <h1 className="text-2xl font-bold mb-4">My Events</h1>
+
       {loading ? (
         <div>Loading events...</div>
       ) : events.length > 0 ? (
