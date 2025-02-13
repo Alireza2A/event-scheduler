@@ -76,7 +76,12 @@ function CreateEventForm({ onClose, onSave }) {
 
           {/* Start and End Date Range Picker */}
           <div className="flex gap-4">
-            {/* Start Date and Time Picker */}
+          </div>
+
+          <div className="flex gap-4">
+           
+           {/* End Date and Time Picker */}
+          <div> <p className="text-left">Start time</p>
             <div className="w-full">
               <DatePicker
                 selected={startDate}
@@ -89,8 +94,10 @@ function CreateEventForm({ onClose, onSave }) {
                 placeholderText="Start Date & Time"
               />
             </div>
+            </div>
 
             {/* End Date and Time Picker */}
+            <div> <p className="text-left">End time</p>
             <div className="w-full">
               <DatePicker
                 selected={endDate}
@@ -102,8 +109,10 @@ function CreateEventForm({ onClose, onSave }) {
                 timeIntervals={15}
                 placeholderText="End Date & Time"
               />
+              </div>
             </div>
           </div>
+
 
           {/* Buttons */}
           <div className="flex justify-end gap-2">
