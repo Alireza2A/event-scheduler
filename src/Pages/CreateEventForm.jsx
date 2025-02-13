@@ -6,13 +6,14 @@ function CreateEventForm({ onClose, onSave }) {
   const [photo, setPhoto] = useState(null);
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
+  const [location, setLocation] = useState("");
   const [date, setDate] = useState(new Date());
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title.trim() || !details.trim()) return;
-    
-    const newEvent = { photo, title, details, date };
+    if (!title.trim() || !details.trim() || !location.trim()) return;
+
+    const newEvent = { photo, title, details, location, date };
     onSave(newEvent);
     onClose(); // Closes modal after saving
   };
@@ -21,30 +22,39 @@ function CreateEventForm({ onClose, onSave }) {
     <div className="fixed inset-0 flex items-center justify-center bg-green-800 bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-lg w-96">
         <h2 className="text-xl font-bold mb-4">Create New Event</h2>
-        
+
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {/* Image Upload */}
-          <input 
-            type="file" 
-            accept="image/*" 
-            onChange={(e) => setPhoto(e.target.files[0])} 
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setPhoto(e.target.files[0])}
             className="border p-2 rounded"
           />
 
           {/* Title */}
-          <input 
-            type="text" 
-            placeholder="Add Event Title" 
-            value={title} 
-            onChange={(e) => setTitle(e.target.value)} 
+          <input
+            type="text"
+            placeholder="Add Event Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             className="border p-2 rounded"
           />
 
           {/* Event Details */}
-          <textarea 
-            placeholder="Add your Event Details" 
-            value={details} 
-            onChange={(e) => setDetails(e.target.value)} 
+          <textarea
+            placeholder="Add your Event Details"
+            value={details}
+            onChange={(e) => setDetails(e.target.value)}
+            className="border p-2 rounded"
+          />
+
+          {/* Location */}
+          <input
+            type="text"
+            placeholder="Enter Event Location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
             className="border p-2 rounded"
           />
 
