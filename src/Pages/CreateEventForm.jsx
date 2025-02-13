@@ -43,19 +43,26 @@ function CreateEventForm({ onClose, onSave }) {
 
           {/* Event Details */}
           <textarea
-            placeholder="Add your Event Details"
-            value={details}
-            onChange={(e) => setDetails(e.target.value)}
-            className="border p-2 rounded"
+          placeholder="Add your Event Details"
+          value={details}
+          onChange={(e) => setDetails(e.target.value)}
+          className="border p-2 rounded resize-none overflow-hidden"
+          rows="3"
+          style={{ minHeight: "50px" }}
+          onInput={(e) => {
+          e.target.style.height = "auto"; // Reset height before measuring
+          e.target.style.height = `${Math.max(e.target.scrollHeight, 50)}px`; // Ensure min height
+          }}
           />
 
-          {/* Location */}
-          <input
-            type="text"
-            placeholder="Enter Event Location"
+
+          {/* Full Address Field */}
+          <textarea
+            placeholder="Add Location (Street, City, ZIP, Country)"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="border p-2 rounded"
+            className="border p-2 rounded resize-none"
+            rows="2"
           />
 
           {/* Date Picker */}
@@ -68,10 +75,17 @@ function CreateEventForm({ onClose, onSave }) {
 
           {/* Buttons */}
           <div className="flex justify-end gap-2">
-            <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-300 rounded">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 bg-gray-300 rounded"
+            >
               Cancel
             </button>
-            <button type="submit" className="btn bg-[#27450D] bg-opacity-70 text-white">
+            <button
+              type="submit"
+              className="btn bg-[#27450D] bg-opacity-70 text-white"
+            >
               Submit
             </button>
           </div>
