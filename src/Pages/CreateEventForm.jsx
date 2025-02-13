@@ -1,15 +1,18 @@
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function CreateEventForm({ onClose, onSave }) {
   const [photo, setPhoto] = useState(null);
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
+  const [date, setDate] = useState(new Date());
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title.trim() || !details.trim()) return;
     
-    const newEvent = { photo, title, details };
+    const newEvent = { photo, title, details, date };
     onSave(newEvent);
     onClose(); // Closes modal after saving
   };
@@ -37,12 +40,20 @@ function CreateEventForm({ onClose, onSave }) {
             className="border p-2 rounded"
           />
 
-          {/* Details */}
+          {/* Event Details */}
           <textarea 
             placeholder="Add your Event Details" 
             value={details} 
             onChange={(e) => setDetails(e.target.value)} 
             className="border p-2 rounded"
+          />
+
+          {/* Date Picker */}
+          <DatePicker
+            selected={date}
+            onChange={(date) => setDate(date)}
+            className="border p-2 rounded w-full"
+            dateFormat="dd/MM/yyyy"
           />
 
           {/* Buttons */}

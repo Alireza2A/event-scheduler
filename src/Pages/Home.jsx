@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useOutletContext, Navigate } from "react-router";
 import CreateEventForm from "./CreateEventForm";
+import EventModal from "../components/EventModal";
 import EventCard from "../components/EventCard";
 import { getAllEvents } from "../data/events";
 import { setSelectedDate } from "../data/localStorage";
@@ -41,6 +42,7 @@ function Home() {
         <div className="container mx-auto p-4 text-center">
             <h1 className="text-2xl font-bold mb-4">My Events</h1>
 
+
             {loading ? (
                 <div>Loading events...</div>
             ) : events.length > 0 ? (
@@ -58,6 +60,7 @@ function Home() {
                     <h3 className="mt-2 text-lg text-gray-500">Add your first Event</h3>
                 </div>
             )}
+
 
             {isModalOpen && <CreateEventForm onClose={() => setIsModalOpen(false)} onSave={handleSaveEvent} />}
         </div>
