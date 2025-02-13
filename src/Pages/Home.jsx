@@ -55,7 +55,7 @@ function Home() {
                 <div className="flex flex-col items-center mt-10">
                     <h2 className="text-xl font-semibold text-gray-600">It looks a bit sleepy here.</h2>
                     <button onClick={() => setIsModalOpen(true)} className="mt-4 bg-[#27450D] bg-opacity-70 font-bold py-3 px-6 rounded-full shadow-md transition">
-                        ➕ Create Event
+                        ➕
                     </button>
                     <h3 className="mt-2 text-lg text-gray-500">Add your first Event</h3>
                 </div>
