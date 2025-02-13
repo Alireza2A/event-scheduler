@@ -11,6 +11,14 @@ const EventModal = () => {
         navigate("/home");
     };
 
+    const handleDelete = async () => {
+        try {
+            await deleteEventById(eventId); // Call your delete event function
+            navigate("/home"); // Redirect to home or another page after deletion
+        } catch (error) {
+            console.error("Failed to delete event:", error);
+        }
+    };
     useEffect(() => {
         let ignore = false;
         (async () => {
@@ -66,6 +74,9 @@ const EventModal = () => {
                 <div className="modal-action mt-4">
                     <button className="btn btn-primary" onClick={handleGoBack}>
                         Close
+                    </button>
+                    <button className="btn btn-danger" onClick={handleDelete}>
+                        Delete Event
                     </button>
                 </div>
             </div>
