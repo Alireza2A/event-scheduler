@@ -6,6 +6,7 @@ const EventModal = () => {
     const [currEvent, setCurrEvent] = useState({});
     const { eventId } = useParams();
     const navigate = useNavigate();
+    const [eventImg, setImg] = useState("src/assets/placeholder.png");
 
     const handleGoBack = () => {
         navigate("/home");
@@ -37,16 +38,9 @@ const EventModal = () => {
                     <>
                         <h2 className="text-xl font-bold">{currEvent.title}</h2>
                         <p className="text-gray-600">{currEvent.description}</p>
-
-                        <div className="mt-4">
-
                         {/* Event Image */}
-                        <img 
-                        src={event.photo ? URL.createObjectURL(event.photo) : "src/assets/placeholder.png"} 
-                        alt={event.title} 
-                        className="w-full h-48 object-cover rounded-md"
-                        />
-
+                        <img src={currEvent.photo ? URL.createObjectURL(currEvent.photo) : "../assets/placeholder.png"} alt={currEvent.title} className="w-full h-48 object-cover rounded-md" />
+                        <div className="mt-4">
                             <p>
                                 <strong>📍 Location:</strong> {currEvent.location}
                             </p>
