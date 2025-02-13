@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useOutletContext, Navigate } from "react-router";
 import CreateEventForm from "./CreateEventForm";
-import EventCard from "../components/EventCard";
+import EventModal from "../components/EventModal";
 
 function Home({ id }) {
   const [events, setEvents] = useState([]);
@@ -24,7 +24,7 @@ function Home({ id }) {
       ) : events.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {events.map((event) => (
-            <EventCard key={event.id} event={event} />
+            <EventModal key={event.id} event={event} />
           ))}
         </div>
       ) : (
