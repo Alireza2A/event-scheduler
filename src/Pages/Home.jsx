@@ -60,20 +60,27 @@ function Home() {
 
             ) : (
                 <div className="border flex flex-col items-center mt-10">
-                     <h2 className="text-5xl font-semibold text-gray-600">It looks a bit sleepy here.</h2>
-                    
-                    <div className="border flex items-center mt-10">
+    <h2 className="text-5xl font-semibold text-gray-600">It looks a bit sleepy here.</h2>
 
-                        <div className="border flex flex-col items-center mt-10">
-                           <img src="src/assets/sleepingsloth.png"></img>
-                        </div>
+    <div className="border flex items-center mt-10">
+        {/* Image Container */}
+        <div className="border flex flex-col items-center mt-10">
+            <img 
+                src="src/assets/sleepingsloth.png" 
+                className="max-h-[50vh] w-auto object-cover overflow-hidden scale-125"
+                style={{ clipPath: "inset(15%)" }}
+                alt="Sleeping Sloth"
+            />
+        </div>
 
-                        <div className="border flex flex-col items-center mt-10">
-                            <FloatingActionButton onClick={() => setIsModalOpen(true)} />
-                            <h3 className="mt-2 text-nowrap text-4xl text-gray-500">Add your first Event</h3>
-                        </div>
-                    </div>
-                </div>
+        {/* Button + Text */}
+        <div className="border flex flex-col items-center mt-10">
+            <FloatingActionButton onClick={() => setIsModalOpen(true)} />
+            <h3 className="mt-2 text-nowrap text-4xl text-gray-500">Add your first Event</h3>
+        </div>
+    </div>
+</div>
+
             )}
 
 
