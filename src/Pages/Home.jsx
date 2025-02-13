@@ -47,12 +47,17 @@ function Home() {
             {loading ? (
                 <div>Loading events...</div>
             ) : events.length > 0 ? (
+                <div className="flex gap-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {events.map((event) => (
                         <EventCard key={event.id} event={event} />
                     ))}
-                    <FloatingActionButton onClick={() => setIsModalOpen(true)} />
                 </div>
+                
+                <FloatingActionButton onClick={() => setIsModalOpen(true)}/>
+
+                </div>
+
             ) : (
                 <div className="flex flex-col items-center mt-10">
                     <h2 className="text-xl font-semibold text-gray-600">It looks a bit sleepy here.</h2>
