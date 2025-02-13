@@ -51,12 +51,15 @@ function Home() {
                     {events.map((event) => (
                         <EventCard key={event.id} event={event} />
                     ))}
+                    <FloatingActionButton onClick={() => setIsModalOpen(true)} />
                 </div>
             ) : (
                 <div className="flex flex-col items-center mt-10">
                     <h2 className="text-xl font-semibold text-gray-600">It looks a bit sleepy here.</h2>
+                    <div className="flex flex-col items-center mt-10">
                     <FloatingActionButton onClick={() => setIsModalOpen(true)} />
                     <h3 className="mt-2 text-lg text-gray-500">Add your first Event</h3>
+                    </div>
                 </div>
             )}
 
