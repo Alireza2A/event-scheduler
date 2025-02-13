@@ -7,20 +7,29 @@ function CreateEventForm({ onClose, onSave }) {
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
   const [location, setLocation] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title.trim() || !details.trim() || !location.trim()) return;
 
-    const newEvent = { photo, title, details, location, date };
+    const newEvent = { photo, title, details, location, startDate, endDate };
     onSave(newEvent);
     onClose(); // Closes modal after saving
   };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-green-800 bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+      <div 
+        className="bg-white p-6 rounded-lg shadow-lg transition-all overflow-auto"
+        style={{
+          minWidth: "24rem",
+          maxWidth: "75ch", // Limits width to 75 characters
+          width: "fit-content",
+          maxHeight: "90vh", // Prevents overlapping with header/footer
+        }}
+      >
         <h2 className="text-xl font-bold mb-4">Create New Event</h2>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -43,35 +52,58 @@ function CreateEventForm({ onClose, onSave }) {
 
           {/* Event Details */}
           <textarea
-          placeholder="Add your Event Details"
-          value={details}
-          onChange={(e) => setDetails(e.target.value)}
-          className="border p-2 rounded resize-none overflow-hidden"
-          rows="3"
-          style={{ minHeight: "50px" }}
-          onInput={(e) => {
-          e.target.style.height = "auto"; // Reset height before measuring
-          e.target.style.height = `${Math.max(e.target.scrollHeight, 50)}px`; // Ensure min height
-          }}
+            placeholder="Add your Event Details"
+            value={details}
+            onChange={(e) => setDetails(e.target.value)}
+            className="border p-2 rounded resize-none overflow-hidden"
+            rows="3"
+            style={{ minHeight: "50px" }}
+            onInput={(e) => {
+              e.target.style.height = "auto"; // Reset height before measuring
+              e.target.style.height = `${Math.max(e.target.scrollHeight, 50)}px`; // Ensure min height
+            }}
           />
 
-
           {/* Full Address Field */}
-          <textarea
+          <input
+            type="text"
             placeholder="Add Location (Street, City, ZIP, Country)"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="border p-2 rounded resize-none"
-            rows="2"
+            className="border p-2 rounded whitespace-nowrap overflow-auto"
+            style={{ width: "100%", maxWidth: "75ch" }}
           />
 
-          {/* Date Picker */}
-          <DatePicker
-            selected={date}
-            onChange={(date) => setDate(date)}
-            className="border p-2 rounded w-full"
-            dateFormat="dd/MM/yyyy"
-          />
+          {/* Start and End Date Range Picker */}
+          <div className="flex gap-4">
+            {/* Start Date and Time Picker */}
+            <div className="w-full">
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                className="border p-2 rounded w-full"
+                dateFormat="dd/MM/yyyy hh:mm aa"
+                showTimeSelect
+                timeFormat="hh:mm aa"
+                timeIntervals={15}
+                placeholderText="Start Date & Time"
+              />
+            </div>
+
+            {/* End Date and Time Picker */}
+            <div className="w-full">
+              <DatePicker
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                className="border p-2 rounded w-full"
+                dateFormat="dd/MM/yyyy hh:mm aa"
+                showTimeSelect
+                timeFormat="hh:mm aa"
+                timeIntervals={15}
+                placeholderText="End Date & Time"
+              />
+            </div>
+          </div>
 
           {/* Buttons */}
           <div className="flex justify-end gap-2">
