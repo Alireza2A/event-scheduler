@@ -1,17 +1,20 @@
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 function CreateEventForm({ onClose, onSave }) {
   const [photo, setPhoto] = useState(null);
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
+  const [date, setDate] = useState(new Date());
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title.trim() || !details.trim()) return;
     
-    const newEvent = { photo, title, details };
+    const newEvent = { photo, title, details, date };
     onSave(newEvent);
-    onClose(); // Closes modal after saving
+    onClose(); // Schließt das Modal nach dem Speichern
   };
 
   return (
@@ -20,7 +23,7 @@ function CreateEventForm({ onClose, onSave }) {
         <h2 className="text-xl font-bold mb-4">Create New Event</h2>
         
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          {/* Image Upload */}
+          {/* Bild hochladen */}
           <input 
             type="file" 
             accept="image/*" 
@@ -28,7 +31,7 @@ function CreateEventForm({ onClose, onSave }) {
             className="border p-2 rounded"
           />
 
-          {/* Title */}
+          {/* Titel */}
           <input 
             type="text" 
             placeholder="Add Event Title" 
@@ -37,12 +40,20 @@ function CreateEventForm({ onClose, onSave }) {
             className="border p-2 rounded"
           />
 
-          {/* Details */}
+          {/* Event-Beschreibung */}
           <textarea 
             placeholder="Add your Event Details" 
             value={details} 
             onChange={(e) => setDetails(e.target.value)} 
             className="border p-2 rounded"
+          />
+
+          {/* Datumsauswahl */}
+          <DatePicker
+            selected={date}
+            onChange={(date) => setDate(date)}
+            className="border p-2 rounded w-full"
+            dateFormat="dd/MM/yyyy"
           />
 
           {/* Buttons */}
