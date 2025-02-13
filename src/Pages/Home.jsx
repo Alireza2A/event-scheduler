@@ -5,6 +5,7 @@ import EventModal from "../components/EventModal";
 import EventCard from "../components/EventCard";
 import { getAllEvents } from "../data/events";
 import { setSelectedDate } from "../data/localStorage";
+import FloatingActionButton from "../components/FloatingActionButton";
 function Home() {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(false); // No API call yet, so set false initially
@@ -45,6 +46,7 @@ function Home() {
             {loading ? (
                 <div>Loading events...</div>
             ) : events.length > 0 ? (
+                <div className="flex gap-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {events.map((event) => (
                         // <EventCard key={event.id} event={event} />
@@ -53,13 +55,18 @@ function Home() {
                         </Link>
                     ))}
                 </div>
+                
+                <FloatingActionButton onClick={() => setIsModalOpen(true)}/>
+
+                </div>
+
             ) : (
                 <div className="flex flex-col items-center mt-10">
                     <h2 className="text-xl font-semibold text-gray-600">It looks a bit sleepy here.</h2>
-                    <button onClick={() => setIsModalOpen(true)} className="mt-4 bg-[#27450D] bg-opacity-70 font-bold py-3 px-6 rounded-full shadow-md transition">
-                        ➕ Create Event
-                    </button>
+                    <div className="flex flex-col items-center mt-10">
+                    <FloatingActionButton onClick={() => setIsModalOpen(true)} />
                     <h3 className="mt-2 text-lg text-gray-500">Add your first Event</h3>
+                    </div>
                 </div>
             )}
 
