@@ -11,16 +11,16 @@ function CreateEventForm({ onClose, onSave }) {
     
     const newEvent = { photo, title, details };
     onSave(newEvent);
-    onClose(); // Schließt das Modal nach dem Speichern
+    onClose(); // Closes modal after saving
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-green-800 bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-lg w-96">
         <h2 className="text-xl font-bold mb-4">Create New Event</h2>
         
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          {/* Bild-Upload */}
+          {/* Image Upload */}
           <input 
             type="file" 
             accept="image/*" 
@@ -28,7 +28,7 @@ function CreateEventForm({ onClose, onSave }) {
             className="border p-2 rounded"
           />
 
-          {/* Titel */}
+          {/* Title */}
           <input 
             type="text" 
             placeholder="Add Event Title" 
@@ -50,7 +50,7 @@ function CreateEventForm({ onClose, onSave }) {
             <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-300 rounded">
               Cancel
             </button>
-            <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded">
+            <button type="submit" className="btn bg-[#27450D] bg-opacity-70 text-white">
               Submit
             </button>
           </div>

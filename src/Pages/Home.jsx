@@ -5,7 +5,7 @@ import EventCard from "../components/EventCard";
 
 function Home({ id }) {
   const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(false); // Kein API-Call, daher direkt false setzen
+  const [loading, setLoading] = useState(false); // No API call yet, so set false initially
   const { signedIn } = useOutletContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -32,7 +32,7 @@ function Home({ id }) {
           <h2 className="text-xl font-semibold text-gray-600">It looks a bit sleepy here.</h2>
           <button 
             onClick={() => setIsModalOpen(true)} 
-            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-md transition"
+            className="mt-4 bg-[#27450D] bg-opacity-70 font-bold py-3 px-6 rounded-full shadow-md transition"
           >
             ➕ Create Event
           </button>
