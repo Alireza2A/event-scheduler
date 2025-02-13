@@ -4,7 +4,7 @@ import CreateEventForm from "./CreateEventForm";
 import EventCard from "../components/EventCard";
 import { getAllEvents } from "../data/events";
 import { setSelectedDate } from "../data/localStorage";
-function Home({ id }) {
+function Home() {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(false); // No API call yet, so set false initially
     const { signedIn } = useOutletContext();
@@ -18,12 +18,15 @@ function Home({ id }) {
         (async () => {
             try {
                 setSelectedDate("");
+                setLoading(true);
                 const events = await getAllEvents();
+                setLoading(false);
                 if (!ignore) {
                     setEvents(events);
                 }
             } catch (error) {
                 console.error(error);
+                setLoading(false);
             }
         })();
 
