@@ -39,6 +39,14 @@ const EventModal = () => {
                         <p className="text-gray-600">{currEvent.description}</p>
 
                         <div className="mt-4">
+
+                        {/* Event Image */}
+                        <img 
+                        src={event.photo ? URL.createObjectURL(event.photo) : "src/assets/placeholder.png"} 
+                        alt={event.title} 
+                        className="w-full h-48 object-cover rounded-md"
+                        />
+
                             <p>
                                 <strong>📍 Location:</strong> {currEvent.location}
                             </p>
