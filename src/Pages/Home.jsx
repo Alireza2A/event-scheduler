@@ -1,52 +1,50 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useOutletContext, Navigate } from "react-router";
-import { getAllEvents } from "../data/events";
+import CreateEventForm from "./CreateEventForm";
+import EventCard from "../components/EventCard";
 
 function Home({ id }) {
-    const [events, setEvents] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const { signedIn } = useOutletContext();
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false); // No API call yet, so set false initially
+  const { signedIn } = useOutletContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const token = localStorage.getItem("token");
-    //use the function getAllEvents, it will automatically filter the events if we have a selected date
-    const fetchUserEvents = async () => {
-        try {
-            const res = await fetch("http://localhost:3001/api/events", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            if (res.ok) {
-                const data = await res.json();
-                setEvents(data.results);
-                setLoading(false);
-            } else {
-                console.error("Failed to fetch events.");
-                setLoading(false);
-            }
-        } catch (error) {
-            console.error("Error fetching user events:", error);
-            setLoading(false);
-        }
-    };
+  const handleSaveEvent = (newEvent) => {
+    setEvents([...events, { id: Date.now(), ...newEvent }]);
+  };
 
-    useEffect(() => {
-        fetchUserEvents();
-    }, []);
-    if (!signedIn) return <Navigate to="/signin" />;
-    return (
-        <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">My Events</h1>
-            {loading ? (
-                <div className="text-center">Loading events...</div>
-            ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {events.length > 0 ? events.filter((event) => event.organizerId === id).map((event) => <EventCard key={event.id} event={event} />) : <p>No events found.</p>}
-                </div>
-            )}
+  if (!signedIn) return <Navigate to="/signin" />;
+
+  return (
+    <div className="container mx-auto p-4 text-center">
+      <h1 className="text-2xl font-bold mb-4">My Events</h1>
+
+      {loading ? (
+        <div>Loading events...</div>
+      ) : events.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {events.map((event) => (
+            <EventCard key={event.id} event={event} />
+          ))}
         </div>
-    );
+      ) : (
+        <div className="flex flex-col items-center mt-10">
+          <h2 className="text-xl font-semibold text-gray-600">It looks a bit sleepy here.</h2>
+          <button 
+            onClick={() => setIsModalOpen(true)} 
+            className="mt-4 bg-[#27450D] bg-opacity-70 font-bold py-3 px-6 rounded-full shadow-md transition"
+          >
+            ➕ Create Event
+          </button>
+          <h3 className="mt-2 text-lg text-gray-500">Add your first Event</h3>
+        </div>
+      )}
+
+      {isModalOpen && (
+        <CreateEventForm onClose={() => setIsModalOpen(false)} onSave={handleSaveEvent} />
+      )}
+    </div>
+  );
 }
+
 export default Home;
