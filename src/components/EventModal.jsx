@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router";
-import { getEventById } from "../data/events";
+import { getEventById, deleteEventById } from "../data/events";
 
 const EventModal = () => {
     const [currEvent, setCurrEvent] = useState({});
@@ -10,15 +10,15 @@ const EventModal = () => {
     const handleGoBack = () => {
         navigate("/home");
     };
-
     const handleDelete = async () => {
         try {
             await deleteEventById(eventId); // Call your delete event function
-            navigate("/home"); // Redirect to home or another page after deletion
+            navigate("/home"); 
         } catch (error) {
             console.error("Failed to delete event:", error);
         }
-    };
+    }
+
     useEffect(() => {
         let ignore = false;
         (async () => {

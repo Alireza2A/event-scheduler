@@ -20,6 +20,27 @@ const getAllEvents = async () => {
         console.error("Error occured while retriving all events:", error);
     }
 };
+// Delete event by id (export only once)
+export const deleteEventById = async (eventId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/events/${eventId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json", 
+            },
+        });
+
+        if (!res.ok) {
+            throw new Error("Failed to delete event");
+        }
+
+        return await res.json();
+    } catch (error) {
+        console.error("Error occurred while deleting event:", error);
+        throw error; 
+    }
+};
+
 
 const getEventById = async (eventId) => {
     try {
@@ -47,4 +68,4 @@ function filterAllEventsWithSelectedDate(allEvents) {
 
     return allEvents.filter((ev) => new Date(ev.date).toDateString() == selectedDate);
 }
-export { getAllEvents, getEventById };
+export { getAllEvents, getEventById};
