@@ -14,7 +14,7 @@ function CreateEventForm({ onClose, onSave }) {
     
     const newEvent = { photo, title, details, date };
     onSave(newEvent);
-    onClose(); // Schließt das Modal nach dem Speichern
+    onClose(); // Closes modal after saving
   };
 
   return (
@@ -23,7 +23,7 @@ function CreateEventForm({ onClose, onSave }) {
         <h2 className="text-xl font-bold mb-4">Create New Event</h2>
         
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          {/* Bild hochladen */}
+          {/* Image Upload */}
           <input 
             type="file" 
             accept="image/*" 
@@ -31,7 +31,7 @@ function CreateEventForm({ onClose, onSave }) {
             className="border p-2 rounded"
           />
 
-          {/* Titel */}
+          {/* Title */}
           <input 
             type="text" 
             placeholder="Add Event Title" 
@@ -40,7 +40,7 @@ function CreateEventForm({ onClose, onSave }) {
             className="border p-2 rounded"
           />
 
-          {/* Event-Beschreibung */}
+          {/* Event Details */}
           <textarea 
             placeholder="Add your Event Details" 
             value={details} 
@@ -48,7 +48,7 @@ function CreateEventForm({ onClose, onSave }) {
             className="border p-2 rounded"
           />
 
-          {/* Datumsauswahl */}
+          {/* Date Picker */}
           <DatePicker
             selected={date}
             onChange={(date) => setDate(date)}
