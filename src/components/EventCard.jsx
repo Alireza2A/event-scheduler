@@ -3,7 +3,7 @@ function EventCard({ event }) {
       <div className="bg-white shadow-lg rounded-lg p-4">
         {/* Event Image */}
         <img 
-          src={event.photo ? URL.createObjectURL(event.photo) : "/placeholder.jpg"} 
+          src={event.photo ? URL.createObjectURL(event.photo) : "src/assets/placeholder.png"} 
           alt={event.title} 
           className="w-full h-48 object-cover rounded-md"
         />
