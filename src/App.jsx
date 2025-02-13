@@ -15,13 +15,13 @@ function App() {
             <Routes>
                 {/* Landing Page */}
                 <Route path="/" element={<LandingPage />} />
-                {/*Protected routing */ }
+                {/*Protected routing */}
                 <Route path="/" element={<MainLayout />}>
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/calendar" element={<MyCalendar />} />
-                    <Route path="/events/:eventId" element={<EventModal />} />
+                    <Route path="/home/events/:eventId" element={<EventModal />} />
                 </Route>
             </Routes>
         </Router>

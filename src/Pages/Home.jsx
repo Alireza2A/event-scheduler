@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useOutletContext, Navigate } from "react-router";
+import { useOutletContext, Navigate, Link } from "react-router";
 import CreateEventForm from "./CreateEventForm";
 import EventModal from "../components/EventModal";
 import EventCard from "../components/EventCard";
@@ -42,13 +42,15 @@ function Home() {
         <div className="container mx-auto p-4 text-center">
             <h1 className="text-2xl font-bold mb-4">My Events</h1>
 
-
             {loading ? (
                 <div>Loading events...</div>
             ) : events.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {events.map((event) => (
-                        <EventCard key={event.id} event={event} />
+                        // <EventCard key={event.id} event={event} />
+                        <Link key={event.id} to={`events/${event.id}`}>
+                            <EventCard key={event.id} event={event} />
+                        </Link>
                     ))}
                 </div>
             ) : (
@@ -60,7 +62,6 @@ function Home() {
                     <h3 className="mt-2 text-lg text-gray-500">Add your first Event</h3>
                 </div>
             )}
-
 
             {isModalOpen && <CreateEventForm onClose={() => setIsModalOpen(false)} onSave={handleSaveEvent} />}
         </div>
