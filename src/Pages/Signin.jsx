@@ -51,8 +51,8 @@ const SignIn = ({ setAuthenticated, setToken }) => {
       <div className="hero bg-transparent">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-5xl font-bold text-green-900">Sign In</h1>
-            <p className="py-6 text-[#48371E]">
+            <h1 className="text-5xl font-cabin font-bold text-green-900">Sign In</h1>
+            <p className="py-6 text-[#48371E] font-cabincon text-xl">
               Access your account to continue to your events.
               <br />
               Don’t have an account?{" "}

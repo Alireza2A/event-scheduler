@@ -53,8 +53,8 @@ const SignUp = () => {
       <div className="hero bg-transparent">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-5xl font-bold text-green-900">Sign Up</h1>
-            <p className="py-6 text-[#48371E]">
+            <h1 className="text-5xl font-bold font-cabin text-green-900">Sign Up</h1>
+            <p className="py-6 text-[#48371E] font-cabincon text-xl">
               Create a new account and schedule an event today! <br />
               Already have an account?{" "}
               <a className="text-blue-500 hover:underline" href="/signin">
