@@ -9,11 +9,16 @@ function CreateEventForm({ onClose, onSave }) {
   const [location, setLocation] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [errorMessage, setErrorMessage] = useState(""); // State to hold error message
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title.trim() || !details.trim() || !location.trim()) return;
+    if (!title.trim() || !details.trim() || !location.trim()) {
+      setErrorMessage("All fields are required except for the image upload.");
+      return;
+    }
 
+    setErrorMessage(""); // Clear the error message if all required fields are filled
     const newEvent = { photo, title, details, location, startDate, endDate };
     onSave(newEvent);
     onClose(); // Closes modal after saving
@@ -76,43 +81,43 @@ function CreateEventForm({ onClose, onSave }) {
 
           {/* Start and End Date Range Picker */}
           <div className="flex gap-4">
-          </div>
-
-          <div className="flex gap-4">
-           
-           {/* End Date and Time Picker */}
-          <div> <p className="text-left">Start time</p>
-            <div className="w-full">
-              <DatePicker
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                className="border p-2 rounded w-full"
-                dateFormat="dd/MM/yyyy hh:mm aa"
-                showTimeSelect
-                timeFormat="hh:mm aa"
-                timeIntervals={15}
-                placeholderText="Start Date & Time"
-              />
-            </div>
+            <div>
+              <p className="text-left">Start time</p>
+              <div className="w-full">
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  className="border p-2 rounded w-full"
+                  dateFormat="dd/MM/yyyy hh:mm aa"
+                  showTimeSelect
+                  timeFormat="hh:mm aa"
+                  timeIntervals={15}
+                  placeholderText="Start Date & Time"
+                />
+              </div>
             </div>
 
-            {/* End Date and Time Picker */}
-            <div> <p className="text-left">End time</p>
-            <div className="w-full">
-              <DatePicker
-                selected={endDate}
-                onChange={(date) => setEndDate(date)}
-                className="border p-2 rounded w-full"
-                dateFormat="dd/MM/yyyy hh:mm aa"
-                showTimeSelect
-                timeFormat="hh:mm aa"
-                timeIntervals={15}
-                placeholderText="End Date & Time"
-              />
+            <div>
+              <p className="text-left">End time</p>
+              <div className="w-full">
+                <DatePicker
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                  className="border p-2 rounded w-full"
+                  dateFormat="dd/MM/yyyy hh:mm aa"
+                  showTimeSelect
+                  timeFormat="hh:mm aa"
+                  timeIntervals={15}
+                  placeholderText="End Date & Time"
+                />
               </div>
             </div>
           </div>
 
+          {/* Validation Message */}
+          {errorMessage && (
+            <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
+          )}
 
           {/* Buttons */}
           <div className="flex justify-end gap-2">
