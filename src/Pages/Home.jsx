@@ -49,16 +49,17 @@ function Home() {
                 <div>Loading events...</div>
             ) : events.length > 0 ? (
                 <div className="flex justify-center gap-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {events.map((event) => (
-                            // <EventCard key={event.id} event={event} />
-                            <Link key={event.id} to={`events/${event.id}`}>
-                                <EventCard key={event.id} event={event} />
-                            </Link>
-                        ))}
-                    </div>
-
-                    <FloatingActionButton onClick={() => setIsModalOpen(true)} />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {events.map((event) => (
+                        // <EventCard key={event.id} event={event} />
+                        <Link key={event.id} to={`events/${event.id}`}>
+                            <EventCard key={event.id} event={event} />
+                        </Link>
+                    ))}
+                </div>
+                <div className="m-12 sticky top-48">
+                <FloatingActionButton onClick={() => setIsModalOpen(true)}/>
+                </div>
                 </div>
             ) : (
                 <div className="flex flex-col items-center mt-10">
