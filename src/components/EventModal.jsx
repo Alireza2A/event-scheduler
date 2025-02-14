@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { getEventById } from "../data/events";
+import ColorStrokeBox from "../components/ColorStrokeBox";
 import placeholderImage from "../assets/placeholder.png";
 
 const EventModal = () => {
@@ -32,19 +33,19 @@ const EventModal = () => {
     }, [eventId]);
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center -mt-20 bg-black bg-opacity-50">
-            <div className="modal-box bg-white p-6 rounded-lg shadow-lg w-96">
+        <div className="fixed inset-0 flex items-center text-center justify-center bg-black bg-opacity-50">
+            <ColorStrokeBox className="p-6 rounded-lg shadow-lg w-96">
                 {currEvent ? (
                     <>
-                        <h2 className="text-xl font-bold text-green-900">{currEvent.title}</h2>
-                        <p className="text-gray-800">{currEvent.description}</p>
+                        <h2 className="text-4xl font-bold mb-4 text-green-900">{currEvent.title}</h2>
+                       
                         {/* Event Image */}
                         <img 
                             src={currEvent.photo ? URL.createObjectURL(currEvent.photo) : placeholderImage} 
                             alt={currEvent.title} 
-                            className="w-full h-48 object-cover rounded-md" 
+                            className="w-full h-48 object-cover rounded-md my-4" 
                         />
-                        <div className="mt-4 text-gray-800">
+                        <div className="mt-4 my-4 text-white">
                             <p>
                                 <strong>📍 Location:</strong> {currEvent.location}
                             </p>
@@ -60,21 +61,23 @@ const EventModal = () => {
                             <p>
                                 <strong>🔄 Updated At:</strong> {new Date(currEvent.updatedAt).toLocaleString()}
                             </p>
+                            
                         </div>
+                        <p className="text-white">{currEvent.description}</p>
                     </>
                 ) : (
-                    <div className="text-center">
+                    <div className="text-center text-white">
                         <h2 className="text-xl font-bold">⚠️ No Event Found</h2>
-                        <p className="text-gray-600">The event you are looking for does not exist.</p>
+                        <p>The event you are looking for does not exist.</p>
                     </div>
                 )}
 
-                <div className="modal-action mt-4">
-                    <button className="btn bg-[#27450D] bg-opacity-70 text-gray-950" onClick={handleGoBack}>
+                <div className="modal-action mt-4 flex justify-center">
+                    <button className="btn bg-[#27450D] bg-opacity-70 text-white" onClick={handleGoBack}>
                         Close
                     </button>
                 </div>
-            </div>
+            </ColorStrokeBox>
         </div>
     );
 };
