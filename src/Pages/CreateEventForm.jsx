@@ -25,7 +25,7 @@ function CreateEventForm({ onClose, onSave }) {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-transparent">
       <ColorStrokeBox>
-        <h2 className="text-xl font-bold mb-4">Create New Event</h2>
+        <h2 className="text-xl font-bold mb-4 text-white">Create New Event</h2>
         <form onSubmit={handleSubmit} className="text-white flex flex-col gap-4">
           {/* Image Upload */}
           <FormInput
@@ -50,7 +50,7 @@ function CreateEventForm({ onClose, onSave }) {
             style={{ minHeight: "50px" }}
             onInput={(e) => {
               e.target.style.height = "auto"; // Reset height before measuring
-              e.target.style.height = ${Math.max(e.target.scrollHeight, 50)}px; // Ensure min height
+              e.target.style.height = $;{Math.max(e.target.scrollHeight, 50)}px; // Ensure min height
             }}
           />
           {/* Full Address Field */}
