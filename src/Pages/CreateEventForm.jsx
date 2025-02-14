@@ -53,7 +53,7 @@ function CreateEventForm({ onClose, onSave }) {
             style={{ minHeight: "50px" }}
             onInput={(e) => {
               e.target.style.height = "auto"; // Reset height before measuring
-              e.target.style.height = $;{Math.max(e.target.scrollHeight, 50)}px; // Ensure min height
+              e.target.style.height = `${Math.max(e.target.scrollHeight, 50)}px`; // Ensure min height
             }}
           />
           {/* Full Address Field */}
