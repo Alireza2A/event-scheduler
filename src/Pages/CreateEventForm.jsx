@@ -1,7 +1,8 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import ColorStrokeBox from "../components/ColorStrokeBox";
+import FormInput from "../components/FormInput";
 function CreateEventForm({ onClose, onSave }) {
   const [photo, setPhoto] = useState(null);
   const [title, setTitle] = useState("");
@@ -10,75 +11,56 @@ function CreateEventForm({ onClose, onSave }) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [errorMessage, setErrorMessage] = useState(""); // State to hold error message
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title.trim() || !details.trim() || !location.trim()) {
       setErrorMessage("All fields are required except for the image upload.");
       return;
     }
-
     setErrorMessage(""); // Clear the error message if all required fields are filled
     const newEvent = { photo, title, details, location, startDate, endDate };
     onSave(newEvent);
     onClose(); // Closes modal after saving
   };
-
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div 
-        className="bg-white p-6 rounded-lg shadow-lg transition-all overflow-auto"
-        style={{
-          minWidth: "24rem",
-          maxWidth: "75ch", // Limits width to 75 characters
-          width: "fit-content",
-          maxHeight: "90vh", // Prevents overlapping with header/footer
-        }}
-      >
+    <div className="fixed inset-0 flex items-center justify-center bg-transparent">
+      <ColorStrokeBox>
         <h2 className="text-xl font-bold mb-4">Create New Event</h2>
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="text-white flex flex-col gap-4">
           {/* Image Upload */}
-          <input
+          <FormInput
             type="file"
             accept="image/*"
             onChange={(e) => setPhoto(e.target.files[0])}
-            className="border p-2 rounded"
           />
-
           {/* Title */}
-          <input
+          <FormInput
             type="text"
             placeholder="Add Event Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border p-2 rounded bg-green-950"
           />
-
           {/* Event Details */}
           <textarea
             placeholder="Add your Event Details"
             value={details}
             onChange={(e) => setDetails(e.target.value)}
-            className="border p-2 rounded resize-none overflow-hidden bg-green-950"
+            className="p-2 rounded bg-green-950 bg-opacity-40 placeholder-white resize-none overflow-hidden"
             rows="3"
             style={{ minHeight: "50px" }}
             onInput={(e) => {
               e.target.style.height = "auto"; // Reset height before measuring
-              e.target.style.height = `${Math.max(e.target.scrollHeight, 50)}px`; // Ensure min height
+              e.target.style.height = ${Math.max(e.target.scrollHeight, 50)}px; // Ensure min height
             }}
           />
-
           {/* Full Address Field */}
-          <input
+          <FormInput
             type="text"
             placeholder="Add Location (Street, City, ZIP, Country)"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="border p-2 rounded whitespace-nowrap overflow-auto bg-green-950"
             style={{ width: "100%", maxWidth: "75ch" }}
           />
-
           {/* Start and End Date Range Picker */}
           <div className="flex gap-4">
             <div>
@@ -87,7 +69,7 @@ function CreateEventForm({ onClose, onSave }) {
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
-                  className="border p-2 rounded w-full bg-green-950"
+                  className="p-2 bg-green-950 bg-opacity-40 rounded w-full"
                   dateFormat="dd/MM/yyyy hh:mm aa"
                   showTimeSelect
                   timeFormat="hh:mm aa"
@@ -96,14 +78,13 @@ function CreateEventForm({ onClose, onSave }) {
                 />
               </div>
             </div>
-
             <div>
               <p className="text-left">End time</p>
               <div className="w-full">
                 <DatePicker
                   selected={endDate}
                   onChange={(date) => setEndDate(date)}
-                  className="border p-2 rounded w-full bg-green-950"
+                  className="p-2 bg-green-950 bg-opacity-40 rounded w-full"
                   dateFormat="dd/MM/yyyy hh:mm aa"
                   showTimeSelect
                   timeFormat="hh:mm aa"
@@ -113,18 +94,16 @@ function CreateEventForm({ onClose, onSave }) {
               </div>
             </div>
           </div>
-
           {/* Validation Message */}
           {errorMessage && (
             <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
           )}
-
           {/* Buttons */}
-          <div className="flex justify-end gap-2">
+          <div className="flex justify-center gap-2">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 bg-gray-300 text-green-950 rounded"
+              className="px-4 py-2 bg-gray-300 rounded text-[#27450D]"
             >
               Cancel
             </button>
@@ -136,9 +115,8 @@ function CreateEventForm({ onClose, onSave }) {
             </button>
           </div>
         </form>
-      </div>
+      </ColorStrokeBox>
     </div>
   );
 }
-
 export default CreateEventForm;
