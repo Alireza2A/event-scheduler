@@ -1,6 +1,6 @@
 // const BASE_URL = "http://localhost:3001/api/events";
 import { BASE_URL } from "./EventsApiURL";
-import { getSelectedData } from "../data/localStorage";
+import { getSelectedData, getToken, getUserId } from "../data/localStorage";
 const getAllEvents = async () => {
     try {
         const res = await fetch(`${BASE_URL}/events`, {
@@ -47,4 +47,35 @@ function filterAllEventsWithSelectedDate(allEvents) {
 
     return allEvents.filter((ev) => new Date(ev.date).toDateString() == selectedDate);
 }
-export { getAllEvents, getEventById };
+
+const saveEventPersistent = async (currEvent) => {
+    const token = getToken();
+    const userId = Number(getUserId());
+    try {
+        const res = await fetch(`${BASE_URL}/events`, {
+            method: "Post",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ` + token,
+            },
+            body: JSON.stringify({
+                title: currEvent.title,
+                description: currEvent.description,
+                date: currEvent.date,
+                location: currEvent.location,
+                latitude: 0,
+                longitude: 0,
+                organizerId: userId,
+            }),
+        });
+
+        if (res.ok) {
+            console.error("event is stored in data base");
+        } else {
+            console.error("res status", res.status + res.statusText);
+        }
+    } catch (error) {
+        console.error("event is not stored in data base:", error);
+    }
+};
+export { getAllEvents, getEventById, saveEventPersistent };

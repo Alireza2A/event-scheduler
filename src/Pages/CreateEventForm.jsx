@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import ColorStrokeBox from "../components/ColorStrokeBox";
 import FormInput from "../components/FormInput";
 function CreateEventForm({ onClose, onSave }) {
+
   const [photo, setPhoto] = useState(null);
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
@@ -11,17 +12,19 @@ function CreateEventForm({ onClose, onSave }) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [errorMessage, setErrorMessage] = useState(""); // State to hold error message
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!title.trim() || !details.trim() || !location.trim()) {
-      setErrorMessage("All fields are required except for the image upload.");
-      return;
-    }
-    setErrorMessage(""); // Clear the error message if all required fields are filled
-    const newEvent = { photo, title, details, location, startDate, endDate };
-    onSave(newEvent);
-    onClose(); // Closes modal after saving
-  };
+   const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!title.trim() || !details.trim() || !location.trim()) {
+            setErrorMessage("All fields are required except for the image upload.");
+            return;
+        }
+
+        setErrorMessage(""); // Clear the error message if all required fields are filled
+        const currentDate = new Date().toISOString();
+        const newEvent = { title, description: details, date: currentDate, location };
+        onSave(newEvent);
+        onClose(); // Closes modal after saving
+    };
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-transparent">
       <ColorStrokeBox>
