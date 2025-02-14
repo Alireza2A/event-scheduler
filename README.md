@@ -14,5 +14,3 @@ Alireza Doagooei, Julia Baur, Mounika Nanjala, Kaspar Sinitsin.
 4. Run ```npm install``` (if needed) and ```npm run dev```
 
 5. Sign up to see the app content
-
-3. In the new VSCode window 
