@@ -9,7 +9,7 @@ function EventCard({ event }) {
         />
         
         {/* Title */}
-        <h2 className="text-lg font-bold mt-2">{event.title}</h2>
+        <h2 className="text-lg font-bold mt-2 text-green-900">{event.title}</h2>
   
         {/* Details */}
         <p className="text-gray-600 mt-1">{event.details}</p>
