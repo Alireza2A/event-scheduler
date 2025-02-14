@@ -57,9 +57,9 @@ function Home() {
                         </Link>
                     ))}
                 </div>
-                <div className="m-12 sticky top-48">
-                <FloatingActionButton onClick={() => setIsModalOpen(true)}/>
-                </div>
+                <div className="m-12 sticky top-16 self-start">
+  <FloatingActionButton onClick={() => setIsModalOpen(true)} />
+  </div>
                 </div>
             ) : (
                 <div className="flex flex-col items-center mt-10">
