@@ -54,9 +54,9 @@ function Home() {
                         </Link>
                     ))}
                 </div>
-                
+                <div className="m-12 sticky top-48">
                 <FloatingActionButton onClick={() => setIsModalOpen(true)}/>
-
+                </div>
                 </div>
 
             ) : (

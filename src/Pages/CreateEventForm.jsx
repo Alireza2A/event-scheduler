@@ -25,7 +25,7 @@ function CreateEventForm({ onClose, onSave }) {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-transparent">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div 
         className="bg-white p-6 rounded-lg shadow-lg transition-all overflow-auto"
         style={{
@@ -52,7 +52,7 @@ function CreateEventForm({ onClose, onSave }) {
             placeholder="Add Event Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border p-2 rounded"
+            className="border p-2 rounded bg-green-950"
           />
 
           {/* Event Details */}
@@ -60,7 +60,7 @@ function CreateEventForm({ onClose, onSave }) {
             placeholder="Add your Event Details"
             value={details}
             onChange={(e) => setDetails(e.target.value)}
-            className="border p-2 rounded resize-none overflow-hidden"
+            className="border p-2 rounded resize-none overflow-hidden bg-green-950"
             rows="3"
             style={{ minHeight: "50px" }}
             onInput={(e) => {
@@ -75,7 +75,7 @@ function CreateEventForm({ onClose, onSave }) {
             placeholder="Add Location (Street, City, ZIP, Country)"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="border p-2 rounded whitespace-nowrap overflow-auto"
+            className="border p-2 rounded whitespace-nowrap overflow-auto bg-green-950"
             style={{ width: "100%", maxWidth: "75ch" }}
           />
 
@@ -87,7 +87,7 @@ function CreateEventForm({ onClose, onSave }) {
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
-                  className="border p-2 rounded w-full"
+                  className="border p-2 rounded w-full bg-green-950"
                   dateFormat="dd/MM/yyyy hh:mm aa"
                   showTimeSelect
                   timeFormat="hh:mm aa"
@@ -103,7 +103,7 @@ function CreateEventForm({ onClose, onSave }) {
                 <DatePicker
                   selected={endDate}
                   onChange={(date) => setEndDate(date)}
-                  className="border p-2 rounded w-full"
+                  className="border p-2 rounded w-full bg-green-950"
                   dateFormat="dd/MM/yyyy hh:mm aa"
                   showTimeSelect
                   timeFormat="hh:mm aa"
@@ -124,7 +124,7 @@ function CreateEventForm({ onClose, onSave }) {
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 bg-gray-300 rounded"
+              className="px-4 py-2 bg-gray-300 text-green-950 rounded"
             >
               Cancel
             </button>
