@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import ColorStrokeBox from "../components/ColorStrokeBox";
 
 function CreateEventForm({ onClose, onSave }) {
   const [photo, setPhoto] = useState(null);
@@ -26,15 +27,8 @@ function CreateEventForm({ onClose, onSave }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-transparent">
-      <div 
-        className="bg-white p-6 rounded-lg shadow-lg transition-all overflow-auto"
-        style={{
-          minWidth: "24rem",
-          maxWidth: "75ch", // Limits width to 75 characters
-          width: "fit-content",
-          maxHeight: "90vh", // Prevents overlapping with header/footer
-        }}
-      >
+      
+      <ColorStrokeBox>
         <h2 className="text-xl font-bold mb-4">Create New Event</h2>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -134,9 +128,11 @@ function CreateEventForm({ onClose, onSave }) {
             >
               Submit
             </button>
+            
           </div>
         </form>
-      </div>
+      </ColorStrokeBox>
+
     </div>
   );
 }
