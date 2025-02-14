@@ -40,7 +40,7 @@ if (signedIn) return <Navigate to="/home" />;
                       Access your account to continue to your events.
                       <br />
                       Don’t have an account?{" "}
-                      <a className="text-blue-500 hover:underline" href="/signup">
+                      <a className="text-[#517B5D] hover:underline" href="/signup">
                           Sign Up
                       </a>
                   </p>
