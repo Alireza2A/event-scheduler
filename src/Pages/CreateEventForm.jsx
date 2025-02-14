@@ -3,7 +3,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ColorStrokeBox from "../components/ColorStrokeBox";
 import FormInput from "../components/FormInput";
-
 function CreateEventForm({ onClose, onSave }) {
   const [photo, setPhoto] = useState(null);
   const [title, setTitle] = useState("");
@@ -12,25 +11,21 @@ function CreateEventForm({ onClose, onSave }) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [errorMessage, setErrorMessage] = useState(""); // State to hold error message
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title.trim() || !details.trim() || !location.trim()) {
       setErrorMessage("All fields are required except for the image upload.");
       return;
     }
-
     setErrorMessage(""); // Clear the error message if all required fields are filled
     const newEvent = { photo, title, details, location, startDate, endDate };
     onSave(newEvent);
     onClose(); // Closes modal after saving
   };
-
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-transparent">
       <ColorStrokeBox>
         <h2 className="text-xl font-bold mb-4">Create New Event</h2>
-
         <form onSubmit={handleSubmit} className="text-white flex flex-col gap-4">
           {/* Image Upload */}
           <FormInput
@@ -38,7 +33,6 @@ function CreateEventForm({ onClose, onSave }) {
             accept="image/*"
             onChange={(e) => setPhoto(e.target.files[0])}
           />
-
           {/* Title */}
           <FormInput
             type="text"
@@ -46,7 +40,6 @@ function CreateEventForm({ onClose, onSave }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-
           {/* Event Details */}
           <textarea
             placeholder="Add your Event Details"
@@ -57,10 +50,9 @@ function CreateEventForm({ onClose, onSave }) {
             style={{ minHeight: "50px" }}
             onInput={(e) => {
               e.target.style.height = "auto"; // Reset height before measuring
-              e.target.style.height = `${Math.max(e.target.scrollHeight, 50)}px`; // Ensure min height
+              e.target.style.height = ${Math.max(e.target.scrollHeight, 50)}px; // Ensure min height
             }}
           />
-
           {/* Full Address Field */}
           <FormInput
             type="text"
@@ -69,7 +61,6 @@ function CreateEventForm({ onClose, onSave }) {
             onChange={(e) => setLocation(e.target.value)}
             style={{ width: "100%", maxWidth: "75ch" }}
           />
-
           {/* Start and End Date Range Picker */}
           <div className="flex gap-4">
             <div>
@@ -87,7 +78,6 @@ function CreateEventForm({ onClose, onSave }) {
                 />
               </div>
             </div>
-
             <div>
               <p className="text-left">End time</p>
               <div className="w-full">
@@ -104,12 +94,10 @@ function CreateEventForm({ onClose, onSave }) {
               </div>
             </div>
           </div>
-
           {/* Validation Message */}
           {errorMessage && (
             <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
           )}
-
           {/* Buttons */}
           <div className="flex justify-center gap-2">
             <button
@@ -131,5 +119,4 @@ function CreateEventForm({ onClose, onSave }) {
     </div>
   );
 }
-
 export default CreateEventForm;
