@@ -40,7 +40,7 @@ const SignUp = () => {
       <div className="hero bg-transparent">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-5xl font-bold text-green-900">Sign Up</h1>
+            <h2 className="text-5xl font-bold text-green-900">Sign Up</h2>
             <p className="py-6 text-[#48371E]">
               Create a new account and schedule an event today! <br />
               Already have an account?{" "}

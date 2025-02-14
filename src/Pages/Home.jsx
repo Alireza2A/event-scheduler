@@ -40,8 +40,8 @@ function Home() {
     if (!signedIn) return <Navigate to="/signin" />;
 
     return (
-        <div className="container mx-auto p-4 text-center">
-            <h1 className="text-2xl font-bold mb-4">My Events</h1>
+        <div className="container mx-auto p-4 text-center bg-transparent">
+            <h2 className="text-2xl font-bold mb-4">My Events</h2>
 
             {loading ? (
                 <div>Loading events...</div>

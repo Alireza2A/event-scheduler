@@ -25,7 +25,7 @@ function CreateEventForm({ onClose, onSave }) {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-green-800 bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-transparent">
       <div 
         className="bg-white p-6 rounded-lg shadow-lg transition-all overflow-auto"
         style={{

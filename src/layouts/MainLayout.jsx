@@ -27,7 +27,7 @@ const MainLayout = () => {
     }, [checkSession]);
 
   return (
-      <div className="relative min-h-screen flex flex-col">
+      <div className="relative min-h-screen flex flex-col [&_h2]:font-cabin [&_h3]:font-cabincon [&_p]:font-source [&_button]:font-source [&_button]:font-bold [&_label]:font-source">
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#DBF0BE] to-[#78AC4B] z-10">
               {/* Background Image */}

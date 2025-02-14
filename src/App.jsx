@@ -3,11 +3,16 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 // Pages
 import LandingPage from "./Pages/Landing";
-import SignIn from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp";
+import SignIn from "./Pages/Signin";
+import SignUp from "./Pages/Signup";
 import Home from "./Pages/Home";
 import MyCalendar from "./Pages/Calendar";
 import EventModal from "./components/EventModal";
+//Fonts
+import '@fontsource/galada';
+import '@fontsource/cabin';
+import '@fontsource/cabin-condensed';
+import '@fontsource/source-sans-pro';
 
 function App() {
     return (
