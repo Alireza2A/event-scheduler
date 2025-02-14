@@ -2,6 +2,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ColorStrokeBox from "../components/ColorStrokeBox";
+import FormInput from "../components/FormInput";
 
 function CreateEventForm({ onClose, onSave }) {
   const [photo, setPhoto] = useState(null);
@@ -27,26 +28,23 @@ function CreateEventForm({ onClose, onSave }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-transparent">
-      
       <ColorStrokeBox>
         <h2 className="text-xl font-bold mb-4">Create New Event</h2>
 
         <form onSubmit={handleSubmit} className="text-white flex flex-col gap-4">
           {/* Image Upload */}
-          <input
+          <FormInput
             type="file"
             accept="image/*"
             onChange={(e) => setPhoto(e.target.files[0])}
-            className="p-2 rounded bg-green-900 bg-opacity-30 placeholder-white"
           />
 
           {/* Title */}
-          <input
+          <FormInput
             type="text"
             placeholder="Add Event Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="p-2 rounded bg-green-900 bg-opacity-30 placeholder-white"
           />
 
           {/* Event Details */}
@@ -54,7 +52,7 @@ function CreateEventForm({ onClose, onSave }) {
             placeholder="Add your Event Details"
             value={details}
             onChange={(e) => setDetails(e.target.value)}
-            className="p-2 rounded bg-green-900 bg-opacity-30 placeholder-white resize-none overflow-hidden"
+            className="p-2 rounded bg-green-950 bg-opacity-40 placeholder-white resize-none overflow-hidden"
             rows="3"
             style={{ minHeight: "50px" }}
             onInput={(e) => {
@@ -64,24 +62,23 @@ function CreateEventForm({ onClose, onSave }) {
           />
 
           {/* Full Address Field */}
-          <input
+          <FormInput
             type="text"
             placeholder="Add Location (Street, City, ZIP, Country)"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="p-2 rounded bg-green-900 bg-opacity-30 placeholder-white whitespace-nowrap overflow-auto"
             style={{ width: "100%", maxWidth: "75ch" }}
           />
 
           {/* Start and End Date Range Picker */}
           <div className="flex gap-4">
             <div>
-            <p className="text-left">Start time</p>
+              <p className="text-left">Start time</p>
               <div className="w-full">
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
-                  className="p-2 bg-green-900 bg-opacity-30 rounded w-full"
+                  className="p-2 bg-green-950 bg-opacity-40 rounded w-full"
                   dateFormat="dd/MM/yyyy hh:mm aa"
                   showTimeSelect
                   timeFormat="hh:mm aa"
@@ -97,7 +94,7 @@ function CreateEventForm({ onClose, onSave }) {
                 <DatePicker
                   selected={endDate}
                   onChange={(date) => setEndDate(date)}
-                  className="p-2 bg-green-900 bg-opacity-30 rounded w-full"
+                  className="p-2 bg-green-950 bg-opacity-40 rounded w-full"
                   dateFormat="dd/MM/yyyy hh:mm aa"
                   showTimeSelect
                   timeFormat="hh:mm aa"
@@ -128,11 +125,9 @@ function CreateEventForm({ onClose, onSave }) {
             >
               Submit
             </button>
-            
           </div>
         </form>
       </ColorStrokeBox>
-
     </div>
   );
 }
