@@ -35,7 +35,7 @@ if (signedIn) return <Navigate to="/home" />;
       <div className="hero bg-transparent">
           <div className="hero-content text-center">
               <div className="max-w-md">
-                  <h1 className="text-5xl font-bold text-green-900">Sign In</h1>
+                  <h2 className="text-5xl font-bold text-green-900">Sign In</h2>
                   <p className="py-6 text-[#48371E]">
                       Access your account to continue to your events.
                       <br />
