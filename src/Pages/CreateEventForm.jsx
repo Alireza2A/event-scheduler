@@ -31,13 +31,13 @@ function CreateEventForm({ onClose, onSave }) {
       <ColorStrokeBox>
         <h2 className="text-xl font-bold mb-4">Create New Event</h2>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="text-white flex flex-col gap-4">
           {/* Image Upload */}
           <input
             type="file"
             accept="image/*"
             onChange={(e) => setPhoto(e.target.files[0])}
-            className="border p-2 rounded"
+            className="p-2 rounded bg-green-900 bg-opacity-30 placeholder-white"
           />
 
           {/* Title */}
@@ -46,7 +46,7 @@ function CreateEventForm({ onClose, onSave }) {
             placeholder="Add Event Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border p-2 rounded"
+            className="p-2 rounded bg-green-900 bg-opacity-30 placeholder-white"
           />
 
           {/* Event Details */}
@@ -54,7 +54,7 @@ function CreateEventForm({ onClose, onSave }) {
             placeholder="Add your Event Details"
             value={details}
             onChange={(e) => setDetails(e.target.value)}
-            className="border p-2 rounded resize-none overflow-hidden"
+            className="p-2 rounded bg-green-900 bg-opacity-30 placeholder-white resize-none overflow-hidden"
             rows="3"
             style={{ minHeight: "50px" }}
             onInput={(e) => {
@@ -69,19 +69,19 @@ function CreateEventForm({ onClose, onSave }) {
             placeholder="Add Location (Street, City, ZIP, Country)"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="border p-2 rounded whitespace-nowrap overflow-auto"
+            className="p-2 rounded bg-green-900 bg-opacity-30 placeholder-white whitespace-nowrap overflow-auto"
             style={{ width: "100%", maxWidth: "75ch" }}
           />
 
           {/* Start and End Date Range Picker */}
           <div className="flex gap-4">
             <div>
-              <p className="text-left">Start time</p>
+            <p className="text-left">Start time</p>
               <div className="w-full">
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
-                  className="border p-2 rounded w-full"
+                  className="p-2 bg-green-900 bg-opacity-30 rounded w-full"
                   dateFormat="dd/MM/yyyy hh:mm aa"
                   showTimeSelect
                   timeFormat="hh:mm aa"
@@ -97,7 +97,7 @@ function CreateEventForm({ onClose, onSave }) {
                 <DatePicker
                   selected={endDate}
                   onChange={(date) => setEndDate(date)}
-                  className="border p-2 rounded w-full"
+                  className="p-2 bg-green-900 bg-opacity-30 rounded w-full"
                   dateFormat="dd/MM/yyyy hh:mm aa"
                   showTimeSelect
                   timeFormat="hh:mm aa"
@@ -114,11 +114,11 @@ function CreateEventForm({ onClose, onSave }) {
           )}
 
           {/* Buttons */}
-          <div className="flex justify-end gap-2">
+          <div className="flex justify-center gap-2">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 bg-gray-300 rounded"
+              className="px-4 py-2 bg-gray-300 rounded text-[#27450D]"
             >
               Cancel
             </button>
